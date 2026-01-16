@@ -18,6 +18,7 @@ function App() {
                 <h2>Backend Status</h2>
                 {data ? (
                     <div>
+                        <p>Hi! I am Antik</p>
                         <p>Status: <span className="status-ok">{data.status}</span></p>
                         <p>Message: {data.message}</p>
                         <p>Timestamp: {data.timestamp}</p>
