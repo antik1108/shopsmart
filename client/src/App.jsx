@@ -13,22 +13,24 @@ function App() {
 
     return (
         <div className="container">
-            <h1>ShopSmart</h1>
+            <h1>SHOPSMART TERMINAL v1.0</h1>
             <div className="card">
-                <h2>Backend Status</h2>
+                <h2>system_status</h2>
                 {data ? (
                     <div>
-                        <p>Hi! I am Antik</p>
-                        <p>Status: <span className="status-ok">{data.status}</span></p>
-                        <p>Message: {data.message}</p>
-                        <p>Timestamp: {data.timestamp}</p>
+                        <p>╔════════════════════════════════╗</p>
+                        <p>║ Developer: Antik               ║</p>
+                        <p>║ Status: [{data.status}]             ║</p>
+                        <p>║ Message: {data.message.padEnd(18)}║</p>
+                        <p>║ Time: {new Date(data.timestamp).toLocaleTimeString().padEnd(22)}║</p>
+                        <p>╚════════════════════════════════╝</p>
                     </div>
                 ) : (
-                    <p>Loading backend status...</p>
+                    <p>[ LOADING... ]</p>
                 )}
             </div>
             <p className="hint">
-                Edit <code>src/App.jsx</code> and save to test HMR
+                // Edit src/App.jsx to modify interface
             </p>
         </div>
     )
