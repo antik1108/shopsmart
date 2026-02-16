@@ -1,0 +1,48 @@
+name: CI with Discord Notification
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Server Dependencies
+        run: cd server && npm install
+
+      - name: Install Client Dependencies
+        run: cd client && npm install
+
+      - name: Run Server Tests
+        run: cd server && npm run test
+
+      - name: Run Client Tests
+        run: cd client && npm run test
+
+      - name: Send Discord Success Message
+        if: success()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"✅ Build Passed on branch ${{ github.ref_name }} 🚀\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Send Discord Failure Message
+        if: failure()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"❌ Build Failed on branch ${{ github.ref_name }} 🔥 Check GitHub Actions.\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }}
