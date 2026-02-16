@@ -36,7 +36,7 @@ jobs:
         run: |
           curl -H "Content-Type: application/json" \
           -X POST \
-          -d "{\"content\": \"✅ Build Passed on branch ${{ github.ref_name }} 🚀\"}" \
+          -d "{\"embeds\": [{\"title\": \"✅ Build Passed\", \"color\": 3066993, \"fields\": [{\"name\": \"Repository\", \"value\": \"${{ github.repository }}\", \"inline\": true}, {\"name\": \"Branch\", \"value\": \"${{ github.ref_name }}\", \"inline\": true}, {\"name\": \"Commit\", \"value\": \"[\`${{ github.sha }}\`](${{ github.event.head_commit.url }})\", \"inline\": false}, {\"name\": \"Message\", \"value\": \"${{ github.event.head_commit.message }}\", \"inline\": false}, {\"name\": \"Author\", \"value\": \"${{ github.event.head_commit.author.name }}\", \"inline\": true}, {\"name\": \"Workflow\", \"value\": \"[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\", \"inline\": true}], \"timestamp\": \"${{ github.event.head_commit.timestamp }}\"}]}" \
           ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Send Discord Failure Message
@@ -44,5 +44,5 @@ jobs:
         run: |
           curl -H "Content-Type: application/json" \
           -X POST \
-          -d "{\"content\": \"❌ Build Failed on branch ${{ github.ref_name }} 🔥 Check GitHub Actions.\"}" \
+          -d "{\"embeds\": [{\"title\": \"❌ Build Failed\", \"color\": 15158332, \"fields\": [{\"name\": \"Repository\", \"value\": \"${{ github.repository }}\", \"inline\": true}, {\"name\": \"Branch\", \"value\": \"${{ github.ref_name }}\", \"inline\": true}, {\"name\": \"Commit\", \"value\": \"[\`${{ github.sha }}\`](${{ github.event.head_commit.url }})\", \"inline\": false}, {\"name\": \"Message\", \"value\": \"${{ github.event.head_commit.message }}\", \"inline\": false}, {\"name\": \"Author\", \"value\": \"${{ github.event.head_commit.author.name }}\", \"inline\": true}, {\"name\": \"Workflow\", \"value\": \"[View Run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\", \"inline\": true}], \"description\": \"Please check the workflow logs for details.\", \"timestamp\": \"${{ github.event.head_commit.timestamp }}\"}]}" \
           ${{ secrets.DISCORD_WEBHOOK }}
