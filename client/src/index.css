@@ -1,11 +1,11 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: "Share Tech Mono", "SFMono-Regular", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #b7ffb9;
+  background-color: #060a08;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,20 +19,52 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background:
+    radial-gradient(700px circle at 20% 10%, rgba(0, 255, 140, 0.12), transparent 60%),
+    radial-gradient(900px circle at 80% 90%, rgba(0, 180, 120, 0.12), transparent 60%),
+    #050705;
+  color: #b7ffb9;
 }
 
 #root {
-  max-width: 1280px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
+}
+
+h1 {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6bff8f;
+  text-shadow: 0 0 10px rgba(107, 255, 143, 0.5);
 }
 
 .card {
   padding: 2em;
+  border: 1px solid rgba(107, 255, 143, 0.35);
+  border-radius: 12px;
+  background: rgba(6, 16, 11, 0.7);
+  box-shadow: 0 0 24px rgba(0, 255, 140, 0.15);
+  animation: pulseGlow 2.6s ease-in-out infinite;
 }
 
 .status-ok {
-  color: #646cff;
+  color: #6bff8f;
   font-weight: bold;
+  text-shadow: 0 0 8px rgba(107, 255, 143, 0.6);
+}
+
+.hint {
+  color: rgba(183, 255, 185, 0.7);
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 24px rgba(0, 255, 140, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 36px rgba(0, 255, 140, 0.32);
+  }
 }
