@@ -5,3 +5,31 @@
 1. Implement at least one full CRUD RESTful API
 1. Deploy it on Render for backend and vercel for frontend
 1. Resolve CORS issue if needed after deployment
+
+# Folder Structure
+
+```
+.
+├── DEVOPS_GUIDE.md
+├── Idea.md
+├── README.md
+├── render.yaml
+├── start.sh
+├── client
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── src
+│       ├── App.jsx
+│       ├── App.test.jsx
+│       ├── index.css
+│       ├── main.jsx
+│       └── setupTests.js
+└── server
+	├── package.json
+	├── src
+	│   ├── app.js
+	│   └── index.js
+	└── tests
+		└── app.test.js
+```
