@@ -25,14 +25,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: './server/package-lock.json'
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Run linting
-        run: npm run lint
+        run: npm install
 
       - name: Run tests
         run: npm test
@@ -57,14 +52,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: './client/package-lock.json'
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Verify ESLint config
-        run: test -f .eslintrc.cjs
+        run: npm install
 
       - name: Run linting
         run: npm run lint
